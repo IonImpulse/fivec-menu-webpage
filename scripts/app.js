@@ -225,10 +225,17 @@ async function generateMenu(cafe_menu, school_name, single=false) {
                 station_content.className = "station content";
 
                 // Append meals
-                for (let meal of station.meals) {
+                for (let meal of station.meals.slice(0, 15)) {
                     let meal_div = document.createElement("div");
                     meal_div.className = "meal";
-                    meal_div.innerHTML = `<b>${meal.name}</b>`;
+                    meal_div.innerHTML = `${meal.name}`;
+                    station_content.appendChild(meal_div);
+                }
+
+                if (station.meals.length > 15) {
+                    let meal_div = document.createElement("div");
+                    meal_div.className = "meal";
+                    meal_div.innerHTML = `<b>more options hidden...</b>`;
                     station_content.appendChild(meal_div);
                 }
 
