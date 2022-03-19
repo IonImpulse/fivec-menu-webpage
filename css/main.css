@@ -298,7 +298,7 @@ a:visited {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 #menu-flexbox {
@@ -339,11 +339,15 @@ h2 {
 }
 
 .day-part-content {
+  display: flex;
   padding: 10px;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
 }
 
 .row {
-  width: 85vw;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: left;
@@ -362,24 +366,32 @@ h2 {
 }
 
 .station {
+  display: flex;
+  flex-direction: column;
+  width: 35vh;
   text-align: center;
   border-radius: var(--roundedness);
-  justify-content: center;
-  margin-top: 10px;
+  align-items: center;
   background-color: var(--background-alt);
-  padding: 5px;
 }
 
 .station.name {
+  width: 90%;
   font-size: 1.4em;
   text-align: center;
-  border-radius: var(--roundedness);
   justify-content: center;
+  color: var(--text-alt);
+  background-color: var(--button-outline-active);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .station.content {
   font-size: 1em;
   text-align: center;
   border-radius: var(--roundedness);
+  margin-bottom: 10px;
   justify-content: center;
 }

@@ -195,7 +195,7 @@ async function generateMenu(cafe_menu, school_name, single=false) {
 
         // Append a title div and a content div
         let day_part_title = document.createElement("h2");
-        day_part_title.innerHTML = `<b>${day_part.date}</b>`;
+        day_part_title.innerHTML = `<b>${parseDate(day_part.date)}</b>`;
 
         day_part_div.appendChild(day_part_title);
 
@@ -274,4 +274,26 @@ function parseTime(time_str) {
     }
 
     return `${hour}:${minute} ${am_pm}`;
+}
+
+function parseDate(date_str) {
+    // Formatted yyyy-mm-dd
+    // Want to return as Monday, January 1, 2020
+    let date = new Date(date_str);
+
+    let day = date.getDay();
+
+    let month = date.getMonth();
+
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    // If it's today, bold it
+    if (date.getDate() == new Date().getDate() && date.getMonth() == new Date().getMonth() && date.getFullYear() == new Date().getFullYear()) {
+        return `Today`;
+    } else {
+        return `${days[day]}, ${months[month]} ${date.getDate()}, ${date.getFullYear()}`;
+
+    }
+
 }
