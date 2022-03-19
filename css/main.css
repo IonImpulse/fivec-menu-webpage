@@ -1,0 +1,385 @@
+:root {
+  --main-font: "Inter";
+  --page-background: #eeeef7;
+  --background-alt: #f0f1f3;
+  --background-main: #ffffff;
+  --button-main: #ffffff;
+  --button-outline: #999999;
+  --button-outline-active: #000000;
+  --confirm: #c6ecc0;
+  --deny: #e7bbbb;
+
+  --text-alt: #fdfdfd;
+  --text-course-schedule: #fdfdfd;
+  --text-course-schedule-alt: #2b2b2b;
+  --text-light: #646464;
+  --text-main: #252525;
+  --link-color: #0d2f44;
+
+  --roundedness: 12px;
+  --padding: 13px;
+  --school-HarveyMudd: #fdb913;
+  --school-Pomona: #20438f;
+  --school-ClaremontMckenna: #981a31;
+  --school-Pitzer: #f7941d;
+  --school-Scripps: #34715b;
+
+  --color-1: #4288df;
+  --color-2: #63c721;
+  --color-3: #e48a2e;
+  --color-4: #d6625e;
+  --color-5: #c94cce;
+  --color-6: #cb439a;
+  --color-7: #d84f55;
+  --color-8: #3bc44f;
+  --color-9: #59b0d1;
+
+  --theme-icon: url(../img/theme-light.svg);
+}
+
+[data-theme="dark"] {
+  --page-background: #0f0f11;
+  --background-alt: #16151a;
+  --background-main: #222227;
+  --button-main: #222227;
+  --button-outline: #757575;
+  --button-outline-active: #9e9e9e;
+  --confirm: #59a150;
+  --deny: #a75454;
+  --prereqs: #7995e0;
+  --coreqs: #52bed1;
+
+  --text-alt: #131313;
+  --text-course-schedule: #e9e9e9;
+  --text-light: #bdbdbd;
+  --text-main: #dbdbdb;
+  --link-color: #a7d6f3;
+
+  --color-1: #2c5b8e;
+  --color-2: #499112;
+  --color-3: #b86c25;
+  --color-4: #ac4f4f;
+  --color-5: #86378d;
+  --color-6: #ac4f8d;
+  --color-7: #933535;
+  --color-8: #396f34;
+  --color-9: #3d7991;
+  --theme-icon: url(../img/theme-dark.svg);
+}
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+  background-color: var(--page-background);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+body * {
+  transition: background-color 0.2s ease-in-out, outline-width 0.05s ease-in-out,
+    outline-color 0.01s ease-in-out, outline-offset 0.01s ease-in-out,
+    z-index 0.1s ease-in-out, transform 0.08s ease-in-out,
+    width 0.1s ease-in-out, padding 0.1s ease-in-out;
+  font-family: var(--main-font), sans-serif;
+}
+
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: var(--text-main);
+  margin: 0;
+}
+
+#main-grid {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-areas:
+    "title header"
+    "main-content main-content";
+  grid-template-columns: 4fr 4fr;
+}
+
+#main-content {
+  grid-area: main-content;
+  width: 100%;
+  height: 100%;
+}
+
+#main-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-main);
+  border-radius: var(--roundedness);
+  padding: var(--padding);
+  grid-area: title;
+}
+
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  grid-area: header;
+  background-color: var(--background-main);
+  border-radius: var(--roundedness);
+  padding: var(--padding);
+}
+
+button {
+  background-color: var(--button-main);
+  border-radius: var(--roundedness);
+  color: var(--text-main);
+  cursor: pointer;
+  height: 40px;
+  width: auto;
+  background-size: 30px 30px;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: var(--button-outline) solid 1px;
+  font: 1rem/1rem var(--main-font), monospace;
+  box-sizing: border-box;
+}
+
+button:hover {
+  transform: translate(2px, 2px);
+  border: var(--button-outline-active) solid 1px;
+}
+
+button.big {
+  height: 60px;
+  width: 150px;
+  font-weight: bolder;
+}
+
+#theme-change {
+  background-image: var(--theme-icon);
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 60px;
+}
+
+#logo {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    float: left;
+    clear: left;
+    border-radius: var(--roundedness);
+}
+
+.ClaremontMckenna {
+  color: var(--text-course-schedule);
+  background-color: var(--school-ClaremontMckenna);
+}
+
+.HarveyMudd {
+  color: var(--text-course-schedule-alt);
+  background-color: var(--school-HarveyMudd);
+}
+
+.Pitzer {
+  color: var(--text-course-schedule-alt);
+  background-color: var(--school-Pitzer);
+}
+
+.Scripps {
+  color: var(--text-course-schedule);
+  background-color: var(--school-Scripps);
+}
+
+.Pomona {
+  color: var(--text-course-schedule);
+  background-color: var(--school-Pomona);
+}
+
+.default-button.swal {
+  width: 140px;
+  height: 40px;
+  font-size: 16px;
+}
+
+.default-button.swal.confirm {
+  color: var(--course-open);
+  margin-right: 10px;
+}
+
+.default-button.swal.confirm:hover {
+  background-color: var(--confirm);
+  color: var(--text-main);
+}
+
+.default-button.swal.cancel {
+  color: var(--course-closed);
+  margin-left: 10px;
+}
+
+.default-button.swal.cancel:hover {
+  background-color: var(--deny);
+  color: var(--text-main);
+}
+
+.swal-wide {
+    width: 50vw !important;
+}
+
+.swal-course-popup {
+    text-align: left;
+    padding: 20px;
+    border-radius: var(--roundedness);
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+
+a:link,
+a:visited {
+  color: var(--link-color);
+}
+
+#school-flexbox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.school-button {
+  width: 20vmax;
+  height: 20vmax;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+#back-button {
+  width: 90vw;
+  height: 10vh;
+  background-color: var(--deny);
+  border-radius: var(--roundedness);
+  padding: var(--padding);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+#cafe-flexbox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.cafe-button {
+  width: 90vw;
+  height: 20vh;
+}
+
+.hidden {
+  display: none;
+}
+
+#menu-flexbox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-main);
+}
+
+h1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.day-part {
+  width: 90vw;
+  min-height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  background-color: var(--background-main);
+  border-radius: var(--roundedness);
+  border: var(--button-outline) solid 1px;
+}
+
+.day-part:hover {
+  border : var(--button-outline-active) solid 1px;
+}
+
+.day-part-content {
+  padding: 10px;
+}
+
+.row {
+  width: 85vw;
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  text-align: left;
+  background-color: var(--background-main);
+  border-radius: var(--roundedness);
+}
+
+.row.time-slot {
+  font-size: 1.5em;
+  text-align: center;
+  border-radius: var(--roundedness);
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.station {
+  text-align: center;
+  border-radius: var(--roundedness);
+  justify-content: center;
+  margin-top: 10px;
+  background-color: var(--background-alt);
+  padding: 5px;
+}
+
+.station.name {
+  font-size: 1.4em;
+  text-align: center;
+  border-radius: var(--roundedness);
+  justify-content: center;
+}
+
+.station.content {
+  font-size: 1em;
+  text-align: center;
+  border-radius: var(--roundedness);
+  justify-content: center;
+}
