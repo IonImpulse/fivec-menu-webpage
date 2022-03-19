@@ -180,11 +180,43 @@ async function generateMenu(cafe_menu, school_name, single=false) {
         let cafe_description = document.createElement("p");
         cafe_description.innerHTML = cafe_menu.description;
         flexbox.appendChild(cafe_description);
-    
+    }
+
+    // If there's to-go items, append them
+    if (cafe_menu.to_go_items.length > 0) {
+        let to_go_items_div = document.createElement("div");
+        to_go_items_div.className = "day-part";
+        
+        to_go_items_div.onclick = function () {
+            toggleMenuVisibility(this);
+        };
+
+        let to_go_items_title = document.createElement("h2");
+        to_go_items_title.innerHTML = "To-Go Items";
+        to_go_items_div.appendChild(to_go_items_title);
+
+        let day_part_content = document.createElement("div");
+        day_part_content.className = "day-part-content";
+
+        // Append to go items
+        for (let item of cafe_menu.to_go_items) {
+            let item_div = document.createElement("div");
+            item_div.className = "item";
+            item_div.innerHTML = `<b>${item.name}</b>`;
+            day_part_content.appendChild(item_div);
+        }
+
+        to_go_items_div.appendChild(day_part_content);
+
+        flexbox.appendChild(to_go_items_div);
     }
 
     // Create menu from database
     for (let day_part of cafe_menu.day_menus) {
+        if (day_part.menus.length == 0) {
+            continue;
+        }
+
         // Append date
         let day_part_div = document.createElement("div");
         day_part_div.className = "day-part";
@@ -206,7 +238,13 @@ async function generateMenu(cafe_menu, school_name, single=false) {
             // Append time slot
             let time_slot_div = document.createElement("div");
             time_slot_div.className = "row time-slot";
-            time_slot_div.innerHTML = `<b>${menu.time_slot}: ${parseTime(menu.time_opens)} - ${parseTime(menu.time_closes)}</b>`;
+
+            if (menu.time_opens.trim() == "") {
+                time_slot_div.innerHTML = `<b>${menu.time_slot}</b>`;
+            } else {
+                time_slot_div.innerHTML = `<b>${menu.time_slot}: ${parseTime(menu.time_opens)} - ${parseTime(menu.time_closes)}</b>`;
+            }
+
 
             day_part_content.appendChild(time_slot_div);
 
@@ -250,7 +288,7 @@ async function generateMenu(cafe_menu, school_name, single=false) {
         flexbox.appendChild(day_part_div);
 
     }
-    
+
     el.removeChild(el.childNodes[0]);
     el.appendChild(flexbox);
 }
@@ -286,7 +324,11 @@ function parseTime(time_str) {
 function parseDate(date_str) {
     // Formatted yyyy-mm-dd
     // Want to return as Monday, January 1, 2020
-    let date = new Date(date_str);
+    let split = date_str.split("-");
+
+    let date = new Date(split[0], split[1], split[2], 0, 0, 0, 0);
+
+    console.log(`${date} == ${date_str}`);
 
     let day = date.getDay();
 
@@ -296,7 +338,9 @@ function parseDate(date_str) {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     // If it's today, bold it
-    if (date.getDate() == new Date().getDate() && date.getMonth() == new Date().getMonth() && date.getFullYear() == new Date().getFullYear()) {
+
+
+    if (date.getDate() == new Date().getDate()) {
         return `Today`;
     } else {
         return `${days[day]}, ${months[month]} ${date.getDate()}, ${date.getFullYear()}`;
