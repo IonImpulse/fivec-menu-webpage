@@ -406,6 +406,7 @@ h2 {
 
 .meal {
   width: 30vw;
+  max-width: 130px;
   font-size: 1em;
   min-height: 30px;
   display: flex;
