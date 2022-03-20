@@ -200,9 +200,7 @@ async function generateMenu(cafe_menu, school_name, single=false) {
 
         // Append to go items
         for (let item of cafe_menu.to_go_items) {
-            let item_div = document.createElement("div");
-            item_div.className = "item";
-            item_div.innerHTML = `<b>${item.name}</b>`;
+            let item_div = createMeal(item);
             day_part_content.appendChild(item_div);
         }
 
@@ -264,9 +262,8 @@ async function generateMenu(cafe_menu, school_name, single=false) {
 
                 // Append meals
                 for (let meal of station.meals.slice(0, 15)) {
-                    let meal_div = document.createElement("div");
-                    meal_div.className = "meal";
-                    meal_div.innerHTML = `${meal.name}`;
+                    let meal_div = createMeal(meal);
+
                     station_content.appendChild(meal_div);
                 }
 
@@ -291,6 +288,33 @@ async function generateMenu(cafe_menu, school_name, single=false) {
 
     el.removeChild(el.childNodes[0]);
     el.appendChild(flexbox);
+}
+
+function createMeal(meal) {
+    let meal_div = document.createElement("div");
+    let meal_name = document.createElement("div");
+    let meal_description = document.createElement("div");
+    meal_div.className = "meal";
+
+    meal_name.className = "meal name";
+    meal_name.innerHTML = `<b>${normalizeTitleCapitalization(meal.name)}</b>`;
+
+    meal_description.className = "meal description";
+
+    if (meal.cost != null) {
+        meal_description.innerHTML = `${(meal.cost / 100).toFixed(2)}<br><br>`;
+    }
+
+    meal_description.innerHTML += meal.notes;
+
+    meal_div.appendChild(meal_name);
+    meal_div.appendChild(meal_description);
+
+    return meal_div;
+}
+
+function normalizeTitleCapitalization(str) {
+    return str.trim().toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())))
 }
 
 function toggleMenuVisibility(el) {

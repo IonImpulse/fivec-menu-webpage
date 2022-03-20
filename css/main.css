@@ -269,7 +269,7 @@ a:visited {
 
 #back-button {
   width: 90vw;
-  height: 10vh;
+  height: 6vh;
   background-color: var(--deny);
   border-radius: var(--roundedness);
   padding: var(--padding);
@@ -341,6 +341,7 @@ h2 {
 .day-part-content {
   display: flex;
   padding: 10px;
+  flex: row;
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
@@ -391,8 +392,38 @@ h2 {
 
 .station.content {
   font-size: 1em;
-  text-align: center;
+  text-align: left;
   border-radius: var(--roundedness);
   margin-bottom: 10px;
-  justify-content: center;
+  justify-content: center;  
+  align-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.meal {
+  width: 30vw;
+  font-size: 1em;
+  min-height: 30px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 4px;
+  background-color: var(--background-main);
+  color: var(--text-main);
+  padding: 5px;
+}
+
+.meal.name {
+  padding: 0px
+}
+
+.meal.description {
+  font-size: .8em;
+  padding: 0px;
+  min-height: 0px;
 }
