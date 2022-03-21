@@ -1,6 +1,13 @@
 const API_URL = "https://api.5scheduler.io/"
 const MENUS = "getMenus"
 
+function removeFader() {
+    document.getElementById("fader").classList.add("fade-out");
+    setTimeout(function () {
+        document.getElementById("fader").remove();
+    }, 500);
+}
+
 function toggle_theme() {
 	if (document.documentElement.getAttribute("data-theme") != "dark") {
 		document.documentElement.setAttribute('data-theme', 'dark');

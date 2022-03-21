@@ -33,6 +33,10 @@ async function startup() {
     console.log("Database:", database);
 
     generateSchools();
+
+    setTimeout(() => {
+        removeFader();
+    }, 500);
 }
 
 startup();
