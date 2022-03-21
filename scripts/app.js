@@ -48,7 +48,6 @@ async function generateSchools() {
         school_div.className = `school-button ${school_name}`;
         school_div.innerHTML = `<b>${schoolToReadable(school_name)}</b>`;
         school_div.onclick = function () {
-            console.log(school_name);
             generateCafes(school_name);
         };
 
@@ -128,8 +127,6 @@ async function generateCafes(school_name) {
         flexbox.appendChild(back_button);
 
         for (let cafe_menu of database.menus[school_name].cafes) {
-            console.log(cafe_menu);
-    
             let cafe_div = document.createElement("button");
             cafe_div.className = `cafe-button`;
             cafe_div.innerHTML = `<b>${cafe_menu.name}</b>`;
@@ -351,8 +348,6 @@ function parseDate(date_str) {
     let split = date_str.split("-");
 
     let date = new Date(split[0], split[1], split[2], 0, 0, 0, 0);
-
-    console.log(`${date} == ${date_str}`);
 
     let day = date.getDay();
 

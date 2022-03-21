@@ -1,7 +1,17 @@
 async function startup() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('../sw.js', {scope: '../'})
+            .then(function (registration) {
+                console.log('Registration successful, scope is:', registration.scope);
+            })
+            .catch(function (error) {
+                console.log('Service worker registration failed, error:', error);
+            });
+    }
+
+
     let current_data = await load_json_data("database") ?? false;
-    
-    console.log("Current data:", current_data);
+
 
     let api_update = fetch(`${API_URL}${MENUS}`);
 
@@ -10,9 +20,9 @@ async function startup() {
     }
 
     api_update = await api_update;
-    
+
     let response = await api_update.json();
-    
+
     if (response != undefined && response != "No update needed") {
         database.menus = response;
         await save_json_data("database", database);
@@ -22,7 +32,7 @@ async function startup() {
 
     console.log("Database:", database);
 
-    generateSchools();    
+    generateSchools();
 }
 
 startup();
