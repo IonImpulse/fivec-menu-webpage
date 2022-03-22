@@ -223,10 +223,6 @@ async function generateMenu(cafe_menu, school_name, single=false) {
         let day_part_div = document.createElement("div");
         day_part_div.className = "day-part";
 
-        day_part_div.onclick = function () {
-            toggleMenuVisibility(this);
-        };
-
         // Append a title div and a content div
         let day_part_title = document.createElement("h2");
         day_part_title.innerHTML = `<b>${parseDate(day_part.date)}</b>`;
@@ -234,22 +230,31 @@ async function generateMenu(cafe_menu, school_name, single=false) {
         day_part_div.appendChild(day_part_title);
 
         let day_part_content = document.createElement("div");
-        day_part_content.className = "day-part-content hidden";
+        day_part_content.className = "day-part-content";
 
         for (let menu of day_part.menus) {
-            // Append time slot
             let time_slot_div = document.createElement("div");
-            time_slot_div.className = "row time-slot";
+
+            time_slot_div.className = "time-slot";
+
+            time_slot_div.onclick = function () {
+                toggleMenuVisibility(this);
+            };
+
+            // Append time slot
+            let time_slot_title = document.createElement("div");
+            time_slot_title.className = "row time-slot";
 
             if (menu.time_opens.trim() == "") {
-                time_slot_div.innerHTML = `<b>${menu.time_slot}</b>`;
+                time_slot_title.innerHTML = `<b>${menu.time_slot}</b>`;
             } else {
-                time_slot_div.innerHTML = `<b>${menu.time_slot}: ${parseTime(menu.time_opens)} - ${parseTime(menu.time_closes)}</b>`;
+                time_slot_title.innerHTML = `<b>${menu.time_slot}: ${parseTime(menu.time_opens)} - ${parseTime(menu.time_closes)}</b>`;
             }
 
+            time_slot_div.appendChild(time_slot_title);
 
-            day_part_content.appendChild(time_slot_div);
-
+            let time_slot_content = document.createElement("div");
+            time_slot_content.className = "time-slot content hidden";
             // Append stations
             for (let station of menu.stations) {
                 // Append station name
@@ -279,9 +284,12 @@ async function generateMenu(cafe_menu, school_name, single=false) {
                 }
 
                 station_div.appendChild(station_content);
-                day_part_content.appendChild(station_div);
-
+                time_slot_content.appendChild(station_div);
             }
+
+            time_slot_div.appendChild(time_slot_content);
+
+            day_part_content.appendChild(time_slot_div);
         }
 
         day_part_div.appendChild(day_part_content);

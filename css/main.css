@@ -331,12 +331,8 @@ h2 {
   user-select: none;
   background-color: var(--background-main);
   border-radius: var(--roundedness);
-  border: var(--button-outline) solid 1px;
 }
 
-.day-part:hover {
-  border : var(--button-outline-active) solid 1px;
-}
 
 .day-part-content {
   display: flex;
@@ -362,11 +358,23 @@ h2 {
   text-align: center;
   border-radius: var(--roundedness);
   justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  padding: 10px;
+  border: var(--button-outline) solid 1px;
+  padding: 10px;
+  background-color: var(--confirm);
 }
 
-.station {
+.row.time-slot:hover {
+  border: var(--button-outline-active) solid 1px;
+}
+
+.time-slot {
+  padding: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.station, .time-slot {
   display: flex;
   flex-direction: column;
   width: 35vh;
