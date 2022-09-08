@@ -362,7 +362,7 @@ function parseDate(date_str) {
     // Want to return as Monday, January 1, 2020
     let split = date_str.split("-");
 
-    let date = new Date(split[0], split[1], split[2], 0, 0, 0, 0);
+    let date = new Date(split[0], split[1] - 1, split[2], 0, 0, 0, 0);
 
     let day = date.getDay();
 
