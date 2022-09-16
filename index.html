@@ -82,6 +82,20 @@
       </div>
       <div id="main-content" class="">
       </div>
+
+      <div id="balances">
+        <div id="info">
+          Login with your Claremont Cash credentials to view your balances.
+        </div>
+
+        <div id="login">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Username">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Password">
+          <button id="login-button" onclick="get_balances()">Get Balances</button>
+        </div>
+      </div>
     </div>
     <script src="scripts/libs/localforage.min.js"></script>
     <script src="scripts/libs/sweetalert2.min.js"></script>

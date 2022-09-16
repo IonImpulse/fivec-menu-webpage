@@ -65,6 +65,58 @@ async function generateSchools() {
     el.appendChild(flexbox);
 }
 
+document.getElementById("username").addEventListener("keyup", function(event) {
+    // enter key using new api
+    if (event.key.toLowerCase() === "enter") {
+        document.getElementById("password").focus();
+    }
+});
+
+document.getElementById("password").addEventListener("keyup", function(event) {
+    // enter key using new api
+    if (event.key.toLowerCase() === "enter") {
+        get_balances();
+    }
+});
+
+async function get_balances() {
+    const info = document.getElementById("info");
+
+    info.innerHTML = "<div class='loader'></div>";
+
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    const response = await fetch(`${API_URL}getClaremontBalances/${username}/${password}`);
+
+    if (response.status == 200) {
+
+        let data = await response.json();
+
+        if (data.Err != undefined) {
+            info.innerHTML = data.Err;
+        } else {
+            // Save data to global state
+            database.claremont_login.username = username;
+            database.claremont_login.password = password;   
+            
+            await save_json_data("database", database);
+            
+            const div = createBalancesDiv(data.Ok);
+            info.innerHTML = div;
+        }
+    } else {
+        info.innerHTML = "An error occurred.";
+    }
+}
+
+function createBalancesDiv(balances) {
+    let div = "";
+    for (let account of balances) {
+        div += `<span><b>${account.name}</b>: $${account.balance}<br></span>`;
+    }
+    return div;
+}
+
 function toApiSchool(school) {
 	let l_school = school.toLowerCase();
 	if (["hmc", "hm", "harvey", "mudd", "harveymudd", "harvey-mudd"].includes(l_school)) {
