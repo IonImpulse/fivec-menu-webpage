@@ -262,10 +262,19 @@ a:visited {
 }
 
 .school-button {
-  width: 20vmax;
-  height: 20vmax;
+  width: 20vw;
+  height: 20vw;
   font-size: 20px;
   line-height: 30px;
+}
+
+@media (max-width: 800px) {
+  .school-button {
+    width: 40vw;
+    height: 40vw;
+    font-size: 15px;
+    line-height: 20px;
+  }
 }
 
 #back-button {
