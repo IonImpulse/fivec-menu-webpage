@@ -17,7 +17,7 @@
   --link-color: #0d2f44;
 
   --roundedness: 5px;
-  --padding: 13px;
+  --padding: 4px;
   --school-HarveyMudd: #fdb913;
   --school-Pomona: #20438f;
   --school-ClaremontMckenna: #981a31;
@@ -152,6 +152,8 @@ button {
   border: var(--button-outline) solid 1px;
   font: 1rem/1rem var(--main-font), monospace;
   box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+
 }
 
 button:hover {
@@ -332,7 +334,7 @@ h2 {
 }
 
 .day-part {
-  width: 90vw;
+  width: 95%;
   min-height: 30px;
   display: flex;
   flex-direction: column;
@@ -341,6 +343,7 @@ h2 {
   user-select: none;
   background-color: var(--background-main);
   border-radius: var(--roundedness);
+  padding: var(--padding);
 }
 
 
@@ -364,7 +367,7 @@ h2 {
 }
 
 .row.time-slot {
-  font-size: 1.5em;
+  font-size: 1.2em;
   text-align: center;
   border-radius: var(--roundedness);
   justify-content: center;
@@ -387,7 +390,7 @@ h2 {
 .station, .time-slot {
   display: flex;
   flex-direction: column;
-  width: 35vh;
+  width: 100%;
   text-align: center;
   border-radius: var(--roundedness);
   align-items: center;
@@ -395,7 +398,7 @@ h2 {
 }
 
 .station.name {
-  width: 90%;
+  width: 95%;
   font-size: 1.4em;
   text-align: center;
   justify-content: center;
@@ -403,8 +406,8 @@ h2 {
   background-color: var(--button-outline-active);
   padding-top: 5px;
   padding-bottom: 5px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
   text-transform: uppercase;
 }
 
@@ -423,7 +426,7 @@ h2 {
 }
 
 .meal {
-  width: 30vw;
+  width: 35vw;
   max-width: 130px;
   font-size: 1em;
   min-height: 30px;
@@ -438,11 +441,12 @@ h2 {
 }
 
 .meal.name {
-  padding: 0px
+  padding: 0px;
+  font-size: .9em;
 }
 
 .meal.description {
-  font-size: .8em;
+  font-size: .7em;
   padding: 0px;
   min-height: 0px;
 }
@@ -534,11 +538,11 @@ h2 {
 }
 
 .loader {
-  border: 16px solid var(--background-alt); /* Light grey */
-  border-top: 16px solid var(--text-main); /* Blue */
+  border: 10px solid var(--background-alt); /* Light grey */
+  border-top: 10px solid var(--text-main); /* Blue */
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
   animation: spin .5s linear infinite;
 }
 
@@ -548,12 +552,21 @@ h2 {
 }
 
 #info {
+  width: 80%;
+  height: 100px;
+  text-align: left;
+  margin: 0 auto;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--background-main);
   border-radius: var(--roundedness);
-  padding: var(--padding);
+  padding: 10px;
   font-size: 1.2em;
+}
+
+#info span {
+  text-align: left;
 }

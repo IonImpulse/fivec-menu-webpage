@@ -112,8 +112,15 @@ async function get_balances() {
 function createBalancesDiv(balances) {
     let div = "";
     for (let account of balances) {
-        div += `<span><b>${account.name}</b>: $${account.balance}<br></span>`;
+        if (account.name.includes("Cash")) {
+            div += `<span><b>${account.name}</b>: $${account.balance}<br></span>`;
+        } else if (account.name.includes("Plus")) {
+            div += `<span><b>Flex</b>: $${account.balance}<br></span>`;
+        } else {
+            div += `<span><b>Meal Plan</b>: ${account.balance} swipes left<br></span>`;
+        }
     }
+
     return div;
 }
 
@@ -429,7 +436,7 @@ function parseDate(date_str) {
     if (date.getDate() == new Date().getDate()) {
         return `Today`;
     } else {
-        return `${days[day]}, ${months[month]} ${date.getDate()}, ${date.getFullYear()}`;
+        return `${days[day]}, ${months[month]} ${date.getDate()}`;
 
     }
 
