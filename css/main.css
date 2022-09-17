@@ -92,7 +92,7 @@ body * {
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 2em;
   font-weight: bold;
   color: var(--text-main);
   margin: 0;
@@ -256,21 +256,24 @@ a:visited {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 10px;
 }
 
 .school-button {
-  width: 20vw;
-  height: 20vw;
+  width: 85%;
+  height: 80px;
   font-size: 20px;
   line-height: 30px;
 }
 
 @media (max-width: 800px) {
+  #school-flexbox {
+    flex-direction: row;
+  }
   .school-button {
     width: 40vw;
     height: 40vw;
@@ -301,7 +304,7 @@ a:visited {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
 }
 
 .cafe-button {
@@ -352,7 +355,7 @@ h2 {
   padding: 10px;
   flex: row;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 10px;
   justify-content: center;
 }
 
