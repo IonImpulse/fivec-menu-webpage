@@ -363,7 +363,7 @@ async function generateMenu(cafe_menu, school_name, single=false) {
 }
 
 function adjusted_stations(stations) {
-    const top = ["exhibition", "creations", "chef corner", "expo station", "mainline", "global", "grill", "expo", "@home"];
+    const top = ["exhibition", "creations", "chef corner", "expo station", "mainline", "global", "expo", "@home"];
     const bottom = ["bakery", "desserts", "sweets", "beverages", "toppings & condiments"]; 
 
     const to_remove = ["miscellaneous", "condiments", "chocolate chip cookies"];
