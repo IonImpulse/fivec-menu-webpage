@@ -65,6 +65,65 @@ async function generateSchools() {
     el.appendChild(flexbox);
 }
 
+document.getElementById("username").addEventListener("keyup", function(event) {
+    // enter key using new api
+    if (event.key.toLowerCase() === "enter") {
+        document.getElementById("password").focus();
+    }
+});
+
+document.getElementById("password").addEventListener("keyup", function(event) {
+    // enter key using new api
+    if (event.key.toLowerCase() === "enter") {
+        get_balances();
+    }
+});
+
+async function get_balances() {
+    const info = document.getElementById("info");
+
+    info.innerHTML = "<div class='loader'></div>";
+
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    const response = await fetch(`${API_URL}getClaremontBalances/${username}/${password}`);
+
+    if (response.status == 200) {
+
+        let data = await response.json();
+
+        if (data.Err != undefined) {
+            info.innerHTML = data.Err;
+        } else {
+            // Save data to global state
+            database.claremont_login.username = username;
+            database.claremont_login.password = password;   
+            
+            await save_json_data("database", database);
+            
+            const div = createBalancesDiv(data.Ok);
+            info.innerHTML = div;
+        }
+    } else {
+        info.innerHTML = "An error occurred.";
+    }
+}
+
+function createBalancesDiv(balances) {
+    let div = "";
+    for (let account of balances) {
+        if (account.name.includes("Cash")) {
+            div += `<span><b>${account.name}</b>: $${account.balance}<br></span>`;
+        } else if (account.name.includes("Plus")) {
+            div += `<span><b>Flex</b>: $${account.balance}<br></span>`;
+        } else {
+            div += `<span><b>Meal Plan</b>: ${account.balance} swipes left<br></span>`;
+        }
+    }
+
+    return div;
+}
+
 function toApiSchool(school) {
 	let l_school = school.toLowerCase();
 	if (["hmc", "hm", "harvey", "mudd", "harveymudd", "harvey-mudd"].includes(l_school)) {
@@ -256,7 +315,8 @@ async function generateMenu(cafe_menu, school_name, single=false) {
             let time_slot_content = document.createElement("div");
             time_slot_content.className = "time-slot content hidden";
             // Append stations
-            for (let station of menu.stations) {
+            const stations = adjusted_stations(menu.stations);
+            for (let station of stations) {
                 // Append station name
                 let station_div = document.createElement("div");
                 station_div.className = "station";
@@ -300,6 +360,33 @@ async function generateMenu(cafe_menu, school_name, single=false) {
 
     el.removeChild(el.childNodes[0]);
     el.appendChild(flexbox);
+}
+
+function adjusted_stations(stations) {
+    const top = ["exhibition", "creations", "chef corner", "expo station", "mainline", "global", "expo", "@home"];
+    const bottom = ["bakery", "desserts", "sweets", "beverages", "toppings & condiments"]; 
+
+    const to_remove = ["miscellaneous", "condiments", "chocolate chip cookies"];
+
+    let adjusted = [];
+    let top_count = 0;
+
+    for (let station of stations) {
+        if (to_remove.includes(station.name.toLowerCase())) {
+            continue;
+        }
+
+        if (top.includes(station.name.toLowerCase())) {
+            adjusted.unshift(station);
+            top_count++;
+        } else if (bottom.includes(station.name.toLowerCase())) {
+            adjusted.push(station);
+        } else {
+            adjusted.splice(top_count, 0, station);
+        }
+    }
+
+    return adjusted;
 }
 
 function createMeal(meal) {
@@ -362,7 +449,7 @@ function parseDate(date_str) {
     // Want to return as Monday, January 1, 2020
     let split = date_str.split("-");
 
-    let date = new Date(split[0], split[1], split[2], 0, 0, 0, 0);
+    let date = new Date(split[0], split[1] - 1, split[2], 0, 0, 0, 0);
 
     let day = date.getDay();
 
@@ -377,7 +464,7 @@ function parseDate(date_str) {
     if (date.getDate() == new Date().getDate()) {
         return `Today`;
     } else {
-        return `${days[day]}, ${months[month]} ${date.getDate()}, ${date.getFullYear()}`;
+        return `${days[day]}, ${months[month]} ${date.getDate()}`;
 
     }
 

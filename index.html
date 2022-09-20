@@ -7,6 +7,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 
 <!--[if gt IE 8]>      <html class="no-js">
+
  <!--<![endif]-->
 <html>
   <head>
@@ -49,6 +50,10 @@
     <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2224-1668.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
     <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1620-2160.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2160-1620.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1290-2796.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2796-1290.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1179-2556.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2556-1179.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
     <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1284-2778.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2778-1284.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
     <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1170-2532.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
@@ -82,6 +87,19 @@
         <button id="theme-change" class="big" onclick="toggle_theme()"></button>
       </div>
       <div id="main-content" class="">
+      </div>
+      <div id="balances">
+        <div id="info">
+          Login with your Claremont Card credentials to view your balances.
+          The password is usually some random generated password.
+        </div>
+        <div id="login">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Student ID">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Password">
+          <button id="login-button" onclick="get_balances()">Get Balances</button>
+        </div>
       </div>
     </div>
     <script src="scripts/libs/localforage.min.js"></script>

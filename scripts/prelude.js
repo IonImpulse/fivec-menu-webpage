@@ -11,7 +11,11 @@ var database = {
         "Scripps",
         "ClaremontMckenna",
         "Pitzer",
-    ]
+    ],
+    claremont_login: {
+        username: "",
+        password: "",
+    }
 };
 
 var vertical_layout = false;
