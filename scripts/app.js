@@ -272,6 +272,8 @@ async function generateMenu(cafe_menu, school_name, single=false) {
         flexbox.appendChild(to_go_items_div);
     }
 
+    const to_show = determineMealToShow();
+
     // Create menu from database
     for (let day_part of cafe_menu.day_menus) {
         if (day_part.menus.length == 0) {
@@ -284,7 +286,8 @@ async function generateMenu(cafe_menu, school_name, single=false) {
 
         // Append a title div and a content div
         let day_part_title = document.createElement("h2");
-        day_part_title.innerHTML = `<b>${parseDate(day_part.date)}</b>`;
+        const day_str = parseDate(day_part.date);
+        day_part_title.innerHTML = `<b>${day_str}</b>`;
 
         day_part_div.appendChild(day_part_title);
 
@@ -313,7 +316,12 @@ async function generateMenu(cafe_menu, school_name, single=false) {
             time_slot_div.appendChild(time_slot_title);
 
             let time_slot_content = document.createElement("div");
-            time_slot_content.className = "time-slot content hidden";
+
+            if (to_show == day_part.menus.indexOf(menu) && day_str == "Today") {
+                time_slot_content.className = "time-slot content";
+            } else {
+                time_slot_content.className = "time-slot content hidden";
+            }
             // Append stations
             const stations = adjusted_stations(menu.stations);
             for (let station of stations) {
@@ -468,4 +476,24 @@ function parseDate(date_str) {
 
     }
 
+}
+
+function determineMealToShow() {
+    let date = new Date();
+    let hour = date.getHours();
+    let meal = 0;
+
+    if (hour >= 11) {
+        meal = 1;
+    }
+
+    if (hour >= 17) {
+        meal = 2;
+    }
+
+    if (hour >= 20) {
+        meal = 3;
+    }
+
+    return meal;
 }
