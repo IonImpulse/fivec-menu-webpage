@@ -272,13 +272,17 @@ async function generateMenu(cafe_menu, school_name, single=false) {
         flexbox.appendChild(to_go_items_div);
     }
 
-    const to_show = determineMealToShow();
 
     // Create menu from database
     for (let day_part of cafe_menu.day_menus) {
+        
         if (day_part.menus.length == 0) {
             continue;
         }
+
+        console.log(day_part);
+
+        const to_show = Math.min(determineMealToShow(), day_part.menus.length - 1);
 
         // Append date
         let day_part_div = document.createElement("div");
@@ -316,6 +320,9 @@ async function generateMenu(cafe_menu, school_name, single=false) {
             time_slot_div.appendChild(time_slot_title);
 
             let time_slot_content = document.createElement("div");
+
+            console.log(to_show);
+            console.log(day_part.menus);
 
             if (to_show == day_part.menus.indexOf(menu) && day_str == "Today") {
                 time_slot_content.className = "time-slot content";
