@@ -19,6 +19,21 @@ function toggle_theme() {
 	}
 }
 
+function switch_screens() {
+    const menu = document.getElementById("main-content");
+    const balances = document.getElementById("balances");
+    const btn = document.getElementById("mode-change");
+
+    menu.classList.toggle("hidden");
+    balances.classList.toggle("hidden");
+
+    if (btn.innerHTML == "Balances") {
+        btn.innerHTML = "Menus";
+    } else {
+        btn.innerHTML = "Balances";
+    }
+}
+
 async function load_json_data(name) {
     return localforage.getItem(name);
 }
@@ -238,7 +253,7 @@ async function generateMenu(cafe_menu, school_name, single=false) {
     cafe_name.innerHTML = `<b>${cafe_menu.name}</b>`;
     flexbox.appendChild(cafe_name);
 
-    if (cafe_menu.description.length > 5) {
+    if (cafe_menu.description.length > 5 && cafe_menu.description != cafe_menu.name) {
         // Append description of cafe
         let cafe_description = document.createElement("p");
         cafe_description.innerHTML = cafe_menu.description;
@@ -280,8 +295,6 @@ async function generateMenu(cafe_menu, school_name, single=false) {
             continue;
         }
 
-        console.log(day_part);
-
         const to_show = Math.min(determineMealToShow(), day_part.menus.length - 1);
 
         // Append date
@@ -320,9 +333,6 @@ async function generateMenu(cafe_menu, school_name, single=false) {
             time_slot_div.appendChild(time_slot_title);
 
             let time_slot_content = document.createElement("div");
-
-            console.log(to_show);
-            console.log(day_part.menus);
 
             if (to_show == day_part.menus.indexOf(menu) && day_str == "Today") {
                 time_slot_content.className = "time-slot content";
@@ -419,11 +429,16 @@ function createMeal(meal) {
         meal_description.innerHTML = `${(meal.cost / 100).toFixed(2)}<br><br>`;
     }
 
-    meal_description.innerHTML += meal.notes;
+    if (meal.notes.trim().toLowerCase() != meal.name.trim().toLowerCase()) {
+        meal_description.innerHTML += meal.notes;
+    }
 
     meal_div.appendChild(meal_name);
-    meal_div.appendChild(meal_description);
 
+    if (meal_description.innerHTML.trim() != "") {
+        meal_div.appendChild(meal_description);
+    }
+    
     return meal_div;
 }
 

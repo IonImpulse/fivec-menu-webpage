@@ -12,7 +12,7 @@
   --text-alt: #fdfdfd;
   --text-course-schedule: #fdfdfd;
   --text-course-schedule-alt: #2b2b2b;
-  --text-light: #646464;
+  --text-light: #3b3b3b;
   --text-main: #252525;
   --link-color: #0d2f44;
 
@@ -104,10 +104,9 @@ h1 {
   display: grid;
   grid-gap: 20px;
   grid-template-areas:
-    "title header"
-    "main-content main-content"
-    "footer footer";
-  grid-template-columns: 4fr 4fr;
+    "header"
+    "main-content"
+    "footer";
 }
 
 #main-content {
@@ -133,6 +132,17 @@ h1 {
   justify-content: space-around;
   align-items: center;
   grid-area: header;
+  background-color: var(--background-main);
+  border-radius: var(--roundedness);
+  padding: var(--padding);
+}
+
+#footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  grid-area: footer;
   background-color: var(--background-main);
   border-radius: var(--roundedness);
   padding: var(--padding);
@@ -178,9 +188,6 @@ button.big {
 #logo {
     height: 50px;
     width: 50px;
-    position: absolute;
-    float: left;
-    clear: left;
     border-radius: var(--roundedness);
 }
 
@@ -270,18 +277,6 @@ a:visited {
   line-height: 30px;
 }
 
-@media (max-width: 800px) {
-  #school-flexbox {
-    flex-direction: row;
-  }
-  .school-button {
-    width: 40vw;
-    height: 40vw;
-    font-size: 15px;
-    line-height: 20px;
-  }
-}
-
 #back-button {
   width: 90vw;
   height: 6vh;
@@ -337,7 +332,7 @@ h2 {
 }
 
 .day-part {
-  width: 95%;
+  width: 80%;
   min-height: 30px;
   display: flex;
   flex-direction: column;
@@ -401,12 +396,11 @@ h2 {
 }
 
 .station.name {
-  width: 95%;
+  color: var(--text-main);
   font-size: 1.4em;
-  text-align: center;
+  text-align: left;
   justify-content: center;
-  color: var(--text-alt);
-  background-color: var(--button-outline-active);
+  align-items: flex-start;
   padding-top: 5px;
   padding-bottom: 5px;
   margin-bottom: 5px;
@@ -419,20 +413,19 @@ h2 {
   text-align: left;
   border-radius: var(--roundedness);
   margin-bottom: 10px;
-  justify-content: center;  
+  justify-content: flex-start;  
   align-content: flex-start;
   align-items: flex-start;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 5px;
 }
 
 .meal {
-  width: 35vw;
+  width: 100%;
   max-width: 130px;
   font-size: 1em;
-  min-height: 30px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -449,6 +442,7 @@ h2 {
 }
 
 .meal.description {
+  color: var(--text-light);
   font-size: .7em;
   padding: 0px;
   min-height: 0px;
@@ -508,7 +502,7 @@ h2 {
 }
 
 #balances {
-  grid-area: footer;
+  grid-area: main-content;
   color: var(--text-main);
 }
 
@@ -572,4 +566,25 @@ h2 {
 
 #info span {
   text-align: left;
+}
+
+
+
+@media (max-width: 800px) {
+  #school-flexbox {
+    flex-direction: row;
+  }
+  .school-button {
+    width: 40vw;
+    height: 40vw;
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .station.content {
+    width: 100%;
+    justify-content: center;
+  }
+  .day-part {
+    width: 100%;
+  }
 }

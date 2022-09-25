@@ -80,15 +80,21 @@
       <img id="loading-image" src="img/favicons/favicon.svg">
     </div>
     <div id="main-grid">
-      <div id="main-title" class="shadow">
-        <img id="logo" src="img/faviconV2.svg" width="30" onclick="generateSchools()">
+      <div id="header">
+        <img id="logo" src="img/faviconV2.svg" onclick="generateSchools()">
+
+        <div id="mode" class="shadow">
+          <button id="mode-change" class="big" onclick="switch_screens()">Balances</button>
+        </div>
+        <div id="theme" class="shadow">
+          <button id="theme-change" class="big" onclick="toggle_theme()"></button>
+        </div>
       </div>
-      <div id="header" class="shadow">
-        <button id="theme-change" class="big" onclick="toggle_theme()"></button>
-      </div>
+
       <div id="main-content" class="">
       </div>
-      <div id="balances">
+
+      <div id="balances" class="hidden">
         <div id="info">
           Login with your Claremont Card credentials to view your balances.
           The password is usually some random generated password.
