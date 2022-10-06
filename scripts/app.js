@@ -158,15 +158,15 @@ function toApiSchool(school) {
 function schoolToReadable(school) {
 	switch (school) {
 		case "HarveyMudd":
-			return "Harvey Mudd College";
+			return "Harvey Mudd";
 		case "ClaremontMckenna":
-			return "Claremont McKenna College";
+			return "Claremont McKenna";
 		case "Pomona":
-			return "Pomona College";
+			return "Pomona";
 		case "Pitzer":
-			return "Pitzer College";
+			return "Pitzer";
 		case "Scripps":
-			return "Scripps College";
+			return "Scripps";
 	}
 }
 
@@ -385,33 +385,6 @@ async function generateMenu(cafe_menu, school_name, single=false) {
 
     el.removeChild(el.childNodes[0]);
     el.appendChild(flexbox);
-}
-
-function adjusted_stations(stations) {
-    const top = ["exhibition", "creations", "chef corner", "expo station", "mainline", "global", "expo", "@home"];
-    const bottom = ["bakery", "desserts", "sweets", "beverages", "toppings & condiments"]; 
-
-    const to_remove = ["miscellaneous", "condiments", "chocolate chip cookies"];
-
-    let adjusted = [];
-    let top_count = 0;
-
-    for (let station of stations) {
-        if (to_remove.includes(station.name.toLowerCase())) {
-            continue;
-        }
-
-        if (top.includes(station.name.toLowerCase())) {
-            adjusted.unshift(station);
-            top_count++;
-        } else if (bottom.includes(station.name.toLowerCase())) {
-            adjusted.push(station);
-        } else {
-            adjusted.splice(top_count, 0, station);
-        }
-    }
-
-    return adjusted;
 }
 
 function createMeal(meal) {

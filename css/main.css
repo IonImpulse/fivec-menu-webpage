@@ -8,11 +8,12 @@
   --button-outline-active: #000000;
   --confirm: #c6ecc0;
   --deny: #e7bbbb;
+  --selected: #5772ec;
 
   --text-alt: #fdfdfd;
   --text-course-schedule: #fdfdfd;
   --text-course-schedule-alt: #2b2b2b;
-  --text-light: #3b3b3b;
+  --text-light: #aaa9a9;
   --text-main: #252525;
   --link-color: #0d2f44;
 
@@ -48,10 +49,11 @@
   --deny: #a75454;
   --prereqs: #7995e0;
   --coreqs: #52bed1;
+  --selected: #95a4e9;
 
   --text-alt: #131313;
   --text-course-schedule: #e9e9e9;
-  --text-light: #bdbdbd;
+  --text-light: #747272;
   --text-main: #dbdbdb;
   --link-color: #a7d6f3;
 
@@ -192,28 +194,28 @@ button.big {
 }
 
 .ClaremontMckenna {
-  color: var(--text-course-schedule);
-  background-color: var(--school-ClaremontMckenna);
+  color: var(--text-course-schedule) !important;
+  background-color: var(--school-ClaremontMckenna) !important;
 }
 
 .HarveyMudd {
-  color: var(--text-course-schedule-alt);
-  background-color: var(--school-HarveyMudd);
+  color: var(--text-course-schedule-alt) !important;
+  background-color: var(--school-HarveyMudd) !important;
 }
 
 .Pitzer {
-  color: var(--text-course-schedule-alt);
-  background-color: var(--school-Pitzer);
+  color: var(--text-course-schedule-alt) !important;
+  background-color: var(--school-Pitzer) !important;
 }
 
 .Scripps {
-  color: var(--text-course-schedule);
-  background-color: var(--school-Scripps);
+  color: var(--text-course-schedule) !important;
+  background-color: var(--school-Scripps) !important;
 }
 
 .Pomona {
-  color: var(--text-course-schedule);
-  background-color: var(--school-Pomona);
+  color: var(--text-course-schedule) !important;
+  background-color: var(--school-Pomona) !important;
 }
 
 .default-button.swal {
@@ -270,10 +272,10 @@ a:visited {
   gap: 10px;
 }
 
-.school-button {
-  width: 85%;
-  height: 80px;
-  font-size: 20px;
+.school-button, .meal-button {
+  width: 60%;
+  height: 40px;
+  font-size: .8em;
   line-height: 30px;
 }
 
@@ -569,6 +571,130 @@ h2 {
 }
 
 
+#scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1em;
+  font-weight: bolder;
+  width: 60px;
+  height: 60px;
+}
+
+.meal-name {
+  font-size: 3em;
+  font-weight: bold;
+  color: var(--text-main);
+}
+
+.meal-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.school * {
+  color: var(--text-main);
+}
+
+.school .school-name {
+  font-size: 1.4em;
+  border-radius: var(--roundedness);
+  font-weight: bolder;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.school .cafe-name {
+  font-size: 1em;
+  margin-bottom: 10px;
+  background-color: var(--text-main);
+  color: var(--text-alt);
+  padding: 5px;
+  border-radius: var(--roundedness);
+}
+
+.school .station-name {
+  font-size: 1.2em;
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+
+.school .meal-station {
+  width: 100%;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: var(--text-light) solid 2px;
+}
+
+.school .meal-station:last-child {
+  border: unset;
+}
+
+.selector {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#day-selector button:hover, #meal-selector button:hover {
+  transform: unset;
+}
+
+#day-selector button, #meal-selector button {
+  border-radius: unset;
+  width: 18vw;
+  font-size: .8em;
+}
+
+#meal-selector button {
+  width: 20vw;
+}
+
+#day-selector button.selected, #meal-selector button.selected {
+  background-color: var(--selected);
+  color: var(--text-alt);
+}
+
+#day-selector button:first-child, #meal-selector button:first-child {
+  border-top-left-radius: var(--roundedness);
+  border-bottom-left-radius: var(--roundedness);
+}
+
+#day-selector button:last-child, #meal-selector button:last-child {
+  border-top-right-radius: var(--roundedness);
+  border-bottom-right-radius: var(--roundedness);
+}
+
+
+#meals-flexbox {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.station-dietary {
+  font-size: .8em;
+  margin-top: 10px;
+  width:fit-content;
+  margin-bottom: 10px;
+  background-color: var(--text-light);
+  color: #ffff;
+  padding: 5px;
+  border-radius: var(--roundedness);
+}
 
 @media (max-width: 800px) {
   #school-flexbox {
@@ -587,4 +713,10 @@ h2 {
   .day-part {
     width: 100%;
   }
+
+  #meals-flexbox {
+    width: 100%;
+  }
+
+
 }

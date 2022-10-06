@@ -37,7 +37,11 @@ async function startup() {
 
     console.log("Database:", database);
 
-    generateSchools();
+    if (database.style == "by_school") {
+        generateSchools();
+    } else if (database.style == "by_meal") {
+        generateMeals();
+    }
 
     setTimeout(() => {
         removeFader();
