@@ -11,9 +11,9 @@ async function generateMeals() {
     // Create 5 buttons, one for the next five days
     let today = new Date();
 
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 7; i++) {
         const day_button = document.createElement("button");
         let day = getYYYYMMDD(today);
         day_button.id = `day-${day}`;
@@ -58,7 +58,7 @@ async function generateMeals() {
 
     today = new Date();
     
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 7; i++) {
         // format as YYYY-MM-DD
         let format_date = getYYYYMMDD(today);
 
