@@ -185,6 +185,13 @@ function schoolToAbbreviation(school) {
 	}
 }
 
+async function switch_ui() {
+    database.style = database.style == "by_school" ? "by_meal" : "by_school";
+    await save_json_data("database", database);
+    database.style == "by_school" ? generateSchools() : generateMeals();
+}
+
+
 async function generateCafes(school_name) {
     let database = await load_json_data("database");
     let el = document.getElementById("main-content");

@@ -1,6 +1,6 @@
 async function generateMeals() {
     let el = document.getElementById("main-content");
-
+    el.innerHTML = "";
     let flexbox = document.createElement("div");
     flexbox.id = "meals-flexbox"
 

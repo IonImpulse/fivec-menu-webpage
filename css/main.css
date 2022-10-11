@@ -174,8 +174,8 @@ button:hover {
 }
 
 button.big {
-  height: 60px;
-  width: 150px;
+  height: 50px;
+  width: 90px;
   font-weight: bolder;
 }
 
