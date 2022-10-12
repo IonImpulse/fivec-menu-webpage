@@ -156,9 +156,34 @@ function getMealsAtTime(menus, day_to_get, meal_to_get) {
     return meals;
 }
 
+function mode(array) {
+    if (array.length == 0)
+        return null;
+    var modeMap = {};
+    var maxEl = array[0], maxCount = 1;
+    for (var i = 0; i < array.length; i++) {
+        var el = array[i];
+        if (modeMap[el] == null)
+            modeMap[el] = 1;
+        else
+            modeMap[el]++;  
+        if (modeMap[el] > maxCount) {
+            maxEl = el;
+            maxCount = modeMap[el];
+        }
+    }
+    return maxEl;
+}
+
 function createMealElement(meals, format_date) {
-    const temp = Object.values(meals)[0][0].meal;
-    const name = temp.time_slot;
+    let all_names = [];
+
+    for (let name of Object.values(meals)) {
+        all_names.push(name[0].meal.time_slot);
+    }
+
+    // choose most common time slot
+    let name = mode(all_names);
 
     let meal_el = document.createElement("div");
     meal_el.classList.add("meal-full");
