@@ -10,113 +10,214 @@
 
  <!--<![endif]-->
 <html>
-  <head>
 
-    <!--- Prelude sets global variables and theming before CSS is loaded -->
+<head>
 
-    <!-- This ensures that there won't be a flash of white/black before content is shown-->
-    <script src="scripts/prelude.js"></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>5menu - Menu and Flex Checker for the 5Cs</title>
-    <meta name="description" content="5menu.io lets you check the menus of all the dining halls on campus, as well as check your Flex, Claremont Cash, and meal swipe balances.">
-    <meta name="keywords" content="5c menu, menu, 5menu, 5menu.io, claremont, hmc, cmc, scripps, pitzer, pomona, flex, claremont cash, meal swipes, swipe">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" href="/img/favicons/favicon.ico">
-    <meta name="theme-color" content="#ffffff">
+  <!--- Prelude sets global variables and theming before CSS is loaded -->
 
-    <!-- CSS -->
-    <link href="css/main.css" rel="stylesheet" type="text/css">
-    <link href="css/sweetalert2.min.css" rel="stylesheet" type="text/css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&amp;display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" sizes="196x196" href="img/favicons/favicon-196.png">
-    <meta name="msapplication-square70x70logo" content="img/favicons/mstile-icon-128.png">
-    <meta name="msapplication-square150x150logo" content="img/favicons/mstile-icon-270.png">
-    <meta name="msapplication-square310x310logo" content="img/favicons/mstile-icon-558.png">
-    <meta name="msapplication-wide310x150logo" content="img/favicons/mstile-icon-558-270.png">
-    <link rel="apple-touch-icon" href="img/favicons/apple-icon-180.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2732-2048.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1668-2388.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2388-1668.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2048-1536.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1668-2224.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2224-1668.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1620-2160.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2160-1620.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1290-2796.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2796-1290.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1179-2556.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2556-1179.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1284-2778.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2778-1284.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1170-2532.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2532-1170.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1125-2436.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2436-1125.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1242-2688.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2688-1242.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-828-1792.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1792-828.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1242-2208.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2208-1242.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-750-1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1334-750.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1136-640.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
-  </head>
-  <body>
+  <!-- This ensures that there won't be a flash of white/black before content is shown-->
+  <script src="scripts/prelude.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>5menu - Menu and Flex Checker for the 5Cs</title>
+  <meta name="description"
+    content="5menu.io lets you check the menus of all the dining halls on campus, as well as check your Flex, Claremont Cash, and meal swipe balances.">
+  <meta name="keywords"
+    content="5c menu, menu, 5menu, 5menu.io, claremont, hmc, cmc, scripps, pitzer, pomona, flex, claremont cash, meal swipes, swipe">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="shortcut icon" href="/img/favicons/favicon.ico">
+  <meta name="theme-color" content="#ffffff">
 
-    <!--[if lt IE 7]>
+  <!-- CSS -->
+  <link href="css/main.css" rel="stylesheet" type="text/css">
+  <link href="css/sweetalert2.min.css" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="196x196" href="img/favicons/favicon-196.png">
+  <meta name="msapplication-square70x70logo" content="img/favicons/mstile-icon-128.png">
+  <meta name="msapplication-square150x150logo" content="img/favicons/mstile-icon-270.png">
+  <meta name="msapplication-square310x310logo" content="img/favicons/mstile-icon-558.png">
+  <meta name="msapplication-wide310x150logo" content="img/favicons/mstile-icon-558-270.png">
+  <link rel="apple-touch-icon" href="img/favicons/apple-icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2048-2732.jpg"
+    media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2732-2048.jpg"
+    media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1668-2388.jpg"
+    media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2388-1668.jpg"
+    media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1536-2048.jpg"
+    media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2048-1536.jpg"
+    media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1668-2224.jpg"
+    media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2224-1668.jpg"
+    media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1620-2160.jpg"
+    media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2160-1620.jpg"
+    media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1290-2796.jpg"
+    media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2796-1290.jpg"
+    media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1179-2556.jpg"
+    media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2556-1179.jpg"
+    media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1284-2778.jpg"
+    media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2778-1284.jpg"
+    media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1170-2532.jpg"
+    media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2532-1170.jpg"
+    media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1125-2436.jpg"
+    media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2436-1125.jpg"
+    media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1242-2688.jpg"
+    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2688-1242.jpg"
+    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-828-1792.jpg"
+    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1792-828.jpg"
+    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1242-2208.jpg"
+    media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-2208-1242.jpg"
+    media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-750-1334.jpg"
+    media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1334-750.jpg"
+    media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-640-1136.jpg"
+    media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="img/favicons/apple-splash-1136-640.jpg"
+    media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+</head>
+
+<body>
+
+  <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <div id="fader">
-      <img id="loading-image" src="img/favicons/favicon.svg">
+  <div id="fader">
+    <img id="loading-image" src="img/favicons/favicon.svg">
+  </div>
+  <div id="main-grid">
+
+
+    <div id="home-screen" class="screen">
     </div>
-    <div id="main-grid">
-      <div id="header">
-        <img id="logo" src="img/faviconV2.svg" onclick="generateSchools()">
 
-        <div id="mode" class="shadow">
-          <button id="mode-change" class="big" onclick="switch_screens()">Balances</button>
+    <div id="balances-screen" class="screen hidden">
+      <div id="info">
+        Login with your Claremont Card credentials to view your balances.
+        The password is usually some randomly generated password.
+      </div>
+      <div id="login">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Student ID">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password">
+        <button id="login-button" onclick="get_balances()">Get Balances</button>
+      </div>
+    </div>
+
+    <div id="flex-optimizer-screen" class="screen hidden">
+      <div id="flex-remaining-container">
+        <h2>Amount of Flex</h2>
+        <input type="currency" id="flex-remaining" placeholder="$-.--" step="any">
+      </div>
+
+      <div id="cafe-select-container">
+        <h2>Select Cafe</h2>
+        <select id="cafe-select">
+          <option value="0">Jay's Place</option>
+          <option value="1">The Cafe</option>
+          <option value="2">The Coop</option>
+          <option value="3">The Hub</option>
+        </select>
+      </div>
+
+      <div id="manual-add-items-container">
+        <h2>
+          Add Items
+        </h2>
+        <p>
+          If you want buy certain items, add them
+          here. Otherwise, leave this blank.
+        </p>
+
+        <button id="add-item-button" onclick="show_item_list_popup()">Open Item List</button>
+
+        <div id="added-items">
         </div>
 
-        <div id="ui-type" class="shadow">
-          <button id="ui-type-change" class="big" onclick="switch_ui()">UI</button>
+        <div id="remaining-flex">
+          <h3>Remaining Flex</h3>
+          <p id="remaining-flex-amount">
+            $-.--
+          </p>
         </div>
+      </div>
+
+      <div id="auto-solve-container">
+        <h2>Flex Out</h2>
         
-        <div id="theme" class="shadow">
-          <button id="theme-change" class="big" onclick="toggle_theme()"></button>
+        <button id="auto-solve-button" onclick="auto_solve()">Flex Out</button>
+
+        <div id="auto-solve-items">
         </div>
       </div>
 
-      <div id="main-content" class="">
+    </div>
+
+    <div id="settings-screen" class="screen hidden">
+      <div id="theme" class="shadow">
+        <button id="theme-change" class="big" onclick="toggle_theme()"></button>
       </div>
 
-      <div id="balances" class="hidden">
-        <div id="info">
-          Login with your Claremont Card credentials to view your balances.
-          The password is usually some randomly generated password.
-        </div>
-        <div id="login">
-          <label for="username">Username</label>
-          <input type="text" id="username" name="username" placeholder="Student ID">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Password">
-          <button id="login-button" onclick="get_balances()">Get Balances</button>
-        </div>
+      <div id="ui-type" class="shadow">
+        <button id="ui-type-change" class="big" onclick="switch_ui()">UI</button>
+      </div>
+
+      <p>
+        Made by Ethan Vazquez. Github: <a href="https://www.github.com/IonImpulse">IonImpulse</a>
+      </p>
+
+    </div>
+
+    <div id="footer">
+      <button id="home-button" class="selected" onclick="set_screen('home')"></button>
+      <button id="balances-button" class="" onclick="set_screen('balances')"></button>
+      <button id="flex-optimizer-button" class="" onclick="set_screen('flex-optimizer')"></button>
+      <button id="settings-button" class="" onclick="set_screen('settings')"></button>
+    </div>
+
+    <!-- Popups -->
+    <div id="item-list-popup">
+      <div id="item-list-container">
+        
       </div>
     </div>
-    <script src="scripts/libs/localforage.min.js"></script>
-    <script src="scripts/libs/sweetalert2.min.js"></script>
-    <script src="scripts/generateMeals.js"></script>
-    <script src="scripts/app.js"></script>
-    <script src="scripts/startup.js"></script>
-  </body>
+
+  </div>
+  <script src="scripts/libs/localforage.min.js"></script>
+  <script src="scripts/libs/sweetalert2.min.js"></script>
+  <script src="scripts/generateMeals.js"></script>
+  <script src="scripts/autoflex.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/startup.js"></script>
+</body>
+
 </html>

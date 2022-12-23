@@ -16,6 +16,7 @@ var database = {
         username: "",
         password: "",
     },
+    flex_remaining: -1,
     style: "by_meal",
     selected_day: null,
     selected_meal: null,

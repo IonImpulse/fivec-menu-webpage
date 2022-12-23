@@ -19,21 +19,6 @@ function toggle_theme() {
 	}
 }
 
-function switch_screens() {
-    const menu = document.getElementById("main-content");
-    const balances = document.getElementById("balances");
-    const btn = document.getElementById("mode-change");
-
-    menu.classList.toggle("hidden");
-    balances.classList.toggle("hidden");
-
-    if (btn.innerHTML == "Balances") {
-        btn.innerHTML = "Menus";
-    } else {
-        btn.innerHTML = "Balances";
-    }
-}
-
 async function load_json_data(name) {
     return localforage.getItem(name);
 }
@@ -58,7 +43,7 @@ function replaceHtml(el, html) {
 
 async function generateSchools() {
     let database = await load_json_data("database");
-    let el = document.getElementById("main-content");
+    let el = document.getElementById("home-screen");
 
     let flexbox = document.createElement("div");
     flexbox.id = "school-flexbox"
@@ -116,7 +101,7 @@ async function get_balances() {
             
             await save_json_data("database", database);
             
-            const div = createBalancesDiv(data.Ok);
+            const div = await createBalancesDiv(data.Ok);
             info.innerHTML = div;
         }
     } else {
@@ -124,13 +109,16 @@ async function get_balances() {
     }
 }
 
-function createBalancesDiv(balances) {
+async function createBalancesDiv(balances) {
     let div = "";
     for (let account of balances) {
         if (account.name.includes("Cash")) {
             div += `<span><b>${account.name}</b>: $${account.balance}<br></span>`;
         } else if (account.name.includes("Plus")) {
             div += `<span><b>Flex</b>: $${account.balance}<br></span>`;
+            database.flex_remaining = account.balance;
+            updateAmountOfFlex();
+            await save_json_data("database", database);
         } else {
             div += `<span><b>Meal Plan</b>: ${account.balance} swipes left<br></span>`;
         }
@@ -194,7 +182,7 @@ async function switch_ui() {
 
 async function generateCafes(school_name) {
     let database = await load_json_data("database");
-    let el = document.getElementById("main-content");
+    let el = document.getElementById("home-screen");
 
     let flexbox = document.createElement("div");
     flexbox.id = "cafe-flexbox";
@@ -232,7 +220,7 @@ async function generateCafes(school_name) {
 
 async function generateMenu(cafe_menu, school_name, single=false) {
     let database = await load_json_data("database");
-    let el = document.getElementById("main-content");
+    let el = document.getElementById("home-screen");
 
     let flexbox = document.createElement("div");
     flexbox.id = "menu-flexbox";
@@ -498,4 +486,22 @@ function determineMealToShow() {
     }
 
     return meal;
+}
+
+function set_screen(element_id) {
+    let screens = document.getElementsByClassName("screen");
+
+    for (let screen of screens) {
+        screen.classList.add("hidden")
+    }
+
+    document.getElementById(element_id + "-screen").classList.remove("hidden");
+
+    let buttons = document.getElementById("footer").children;
+
+    for (let button of buttons) {
+        button.classList.remove("selected");
+    }
+
+    document.getElementById(element_id + "-button").classList.add("selected");
 }

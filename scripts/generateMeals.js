@@ -1,5 +1,5 @@
 async function generateMeals() {
-    let el = document.getElementById("main-content");
+    let el = document.getElementById("home-screen");
     el.innerHTML = "";
     let flexbox = document.createElement("div");
     flexbox.id = "meals-flexbox"
@@ -72,21 +72,7 @@ async function generateMeals() {
         
         today.setDate(today.getDate() + 1);
     }
-
-    // Generate floating botttom right button to scroll to top
-    let scroll_to_top = document.createElement("button");
-    scroll_to_top.id = "scroll-to-top";
-    scroll_to_top.innerHTML = "Top";
-
-    scroll_to_top.addEventListener("click", () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    });
-
-    flexbox.appendChild(scroll_to_top);
-
+    
     el.appendChild(flexbox);
 
     updateDayMeal();
