@@ -27,17 +27,6 @@
   --school-ClaremontMckenna: #981a31;
   --school-Pitzer: #f7941d;
   --school-Scripps: #34715b;
-
-  --color-1: #4288df;
-  --color-2: #63c721;
-  --color-3: #e48a2e;
-  --color-4: #d6625e;
-  --color-5: #c94cce;
-  --color-6: #cb439a;
-  --color-7: #d84f55;
-  --color-8: #3bc44f;
-  --color-9: #59b0d1;
-
   --theme-icon: url(../img/theme-light.svg);
   --invert: 0;
   --invert-not: 1;
@@ -60,16 +49,6 @@
   --text-light: #747272;
   --text-main: #dbdbdb;
   --link-color: #a7d6f3;
-
-  --color-1: #2c5b8e;
-  --color-2: #499112;
-  --color-3: #b86c25;
-  --color-4: #ac4f4f;
-  --color-5: #86378d;
-  --color-6: #ac4f8d;
-  --color-7: #933535;
-  --color-8: #396f34;
-  --color-9: #3d7991;
   --theme-icon: url(../img/theme-dark.svg);
   --invert: 1;
   --invert-not: 0;
@@ -552,7 +531,10 @@ h2 {
   padding: var(--padding);
   display: flex;
   flex-direction: column;
-  row-gap: 10px;
+}
+
+#login-button {
+  margin-top: 10px;
 }
 
 #login label {
@@ -921,6 +903,15 @@ select {
   display: flex;
   flex-direction: column;
   row-gap: 20px;
+}
+
+h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px !important;
+  Background-color: unset !important;
 }
 
 @media (max-width: 800px) {
