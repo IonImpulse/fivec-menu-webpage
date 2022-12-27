@@ -141,10 +141,6 @@ button {
   border: #00000000 solid 1px;
 }
 
-button:hover {
-  border: var(--button-outline-active) solid 1px;
-}
-
 button.big {
   height: 50px;
   width: 90px;
