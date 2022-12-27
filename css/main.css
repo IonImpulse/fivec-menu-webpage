@@ -3,12 +3,13 @@
   --page-background: #eeeef7;
   --background-alt: #f0f1f3;
   --background-main: #ffffff;
-  --button-main: #ffffff;
-  --button-outline: #999999;
+  --button-main: #5e5cf3;
+  --button-text-main: #fefeff;
+  --button-outline: #fefeff;
   --button-outline-active: #000000;
   --confirm: #c6ecc0;
   --deny: #e7bbbb;
-  --selected: #5772ec;
+  --selected: #8a88f0;
 
   --text-alt: #fdfdfd;
   --text-course-schedule: #fdfdfd;
@@ -39,6 +40,7 @@
 
   --theme-icon: url(../img/theme-light.svg);
   --invert: 0;
+  --invert-not: 1;
 }
 
 [data-theme="dark"] {
@@ -70,6 +72,7 @@
   --color-9: #3d7991;
   --theme-icon: url(../img/theme-dark.svg);
   --invert: 1;
+  --invert-not: 0;
 }
 
 html {
@@ -171,19 +174,30 @@ button.big {
 
 #footer button {
   background-color: unset;
-  height: 90%;
+  height: 100%;
   width: 80px;
-  border-radius: var(--roundedness);
+  border-radius: 0px;
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
-  filter: invert(var(--invert));
+  filter: opacity(.6) invert(var(--invert));
 }
 
 #footer button.selected {
-  background-color: var(--selected);
-  filter: invert(0);
-  background-size: 55%;
+  filter: opacity(1) invert(var(--invert));
+  animation: pulse-size .5s;
+}
+
+@keyframes pulse-size {
+  0% {
+    background-size: 50%;
+  }
+  50% {
+    background-size: 55%;
+  }
+  100% {
+    background-size: 50%;
+  }
 }
 
 button#home-button {
@@ -538,25 +552,12 @@ h2 {
   padding: var(--padding);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  row-gap: 10px;
 }
 
 #login label {
   font-size: 1.5em;
   font-weight: bold;
-  color: var(--text-main);
-}
-
-#login input {
-  width: 80%;
-  height: 40px;
-  border-radius: var(--roundedness);
-  border: var(--button-outline) solid 1px;
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 1.2em;
-  background-color: var(--background-alt);
   color: var(--text-main);
 }
 
@@ -731,7 +732,7 @@ h2 {
   margin-bottom: 10px;
 }
 
-#flex-optimizer-screen >* {
+#flex-optimizer-screen >*, #settings-screen >*, #balances-screen >* {
   display: flex;
   flex-direction: column;
   background-color: var(--background-main);
@@ -743,7 +744,7 @@ h2 {
   width: 90%;
 }
 
-input#flex-remaining {
+input {
   width: 80%;
   height: 30px;
   border-radius: var(--roundedness);
@@ -907,6 +908,20 @@ select {
   font-weight: bolder;
 }
 
+#settings-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  margin: 0 auto;
+}
+
+#settings-buttons {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
 
 @media (max-width: 800px) {
   #school-flexbox {

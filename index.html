@@ -125,9 +125,13 @@
         The password is usually some randomly generated password.
       </div>
       <div id="login">
-        <label for="username">Username</label>
+        <h2>
+          Username
+        </h2>
         <input type="text" id="username" name="username" placeholder="Student ID">
-        <label for="password">Password</label>
+        <h2>
+          Password
+        </h2>
         <input type="password" id="password" name="password" placeholder="Password">
         <button id="login-button" onclick="get_balances()">Get Balances</button>
       </div>
@@ -173,7 +177,7 @@
 
       <div id="auto-solve-container">
         <h2>Flex Out</h2>
-        
+
         <button id="auto-solve-button" onclick="auto_solve()">Flex Out</button>
 
         <div id="auto-solve-items">
@@ -183,16 +187,18 @@
     </div>
 
     <div id="settings-screen" class="screen hidden">
-      <div id="theme" class="shadow">
-        <button id="theme-change" class="big" onclick="toggle_theme()"></button>
-      </div>
-
-      <div id="ui-type" class="shadow">
-        <button id="ui-type-change" class="big" onclick="switch_ui()">UI</button>
+      <h1>
+        Settings
+      </h1>
+      <div id="settings-buttons">
+        <button onclick="toggle_theme()">Toggle Light/Dark Mode</button>
+        <button onclick="switch_ui()">Toggle Menu UI</button>  
       </div>
 
       <p>
-        Made by Ethan Vazquez. Github: <a href="https://www.github.com/IonImpulse">IonImpulse</a>
+        Made by Ethan Vazquez.
+        <br>
+        <a href="https://github.com/IonImpulse/fivec-menu-webpage">Github Repo</a>
       </p>
 
     </div>
@@ -207,7 +213,7 @@
     <!-- Popups -->
     <div id="item-list-popup">
       <div id="item-list-container">
-        
+
       </div>
     </div>
 
