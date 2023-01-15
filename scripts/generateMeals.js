@@ -64,6 +64,8 @@ async function generateMeals() {
 
         for (let i = 0; i < 4; i++) {
             const meals = getMealsAtTime(database.menus, format_date, i);
+            console.log(meals);
+
             if (Object.values(meals).length > 0) {
                 let meal_el = createMealElement(meals, format_date, i);
                 flexbox.appendChild(meal_el);
@@ -79,7 +81,7 @@ async function generateMeals() {
 }
 
 function getYYYYMMDD(date) {
-    return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + (date.getDate() < 10 ? "0" + date.getDate() : date.getDate());
+    return date.getFullYear() + "-" + (date.getMonth() < 9 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1) + "-" + (date.getDate() < 10 ? "0" + date.getDate() : date.getDate());
 }
 
 function updateDayMeal() {

@@ -684,7 +684,6 @@ h2 {
   border-bottom-right-radius: var(--roundedness);
 }
 
-
 #meals-flexbox {
   width: 70%;
   margin: 0 auto;
@@ -719,7 +718,7 @@ h2 {
   padding: 10px;
   margin: 0 auto;
   margin-top: 10px;
-  width: 90%;
+  width: 60%;
 }
 
 input {
@@ -932,5 +931,8 @@ h1 {
     width: 95%;
   }
 
+  #flex-optimizer-screen >*, #settings-screen >*, #balances-screen >* {
+    width: 90%;
+  }
 
 }
