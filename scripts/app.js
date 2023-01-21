@@ -113,9 +113,9 @@ async function createBalancesDiv(balances) {
     let div = "";
     for (let account of balances) {
         if (account.name.includes("Cash")) {
-            div += `<span><b>${account.name}</b>: $${account.balance}<br></span>`;
+            div += `<span><b>${account.name}</b>: $${account.balance.toFixed(2)}<br></span>`;
         } else if (account.name.includes("Plus")) {
-            div += `<span><b>Flex</b>: $${account.balance}<br></span>`;
+            div += `<span><b>Flex</b>: $${account.balance.toFixed(2)}<br></span>`;
             database.flex_remaining = account.balance;
             updateAmountOfFlex();
             await save_json_data("database", database);
