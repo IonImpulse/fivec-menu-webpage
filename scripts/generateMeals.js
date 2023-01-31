@@ -37,8 +37,8 @@ async function generateMeals() {
     meal_selector.className = "selector";
 
     // Create 4 buttons, one for each meal
-    const meals = ["Breakfast", "Lunch", "Dinner", "Night"];
-    for (let i = 0; i < 4; i++) {
+    const meals = ["Brunch", "Breakfast", "Lunch", "Dinner", "Night"];
+    for (let i = 0; i < 5; i++) {
         const meal_button = document.createElement("button");
         meal_button.id = `meal-${meals[i]}`;
         meal_button.innerText = meals[i];
@@ -46,6 +46,11 @@ async function generateMeals() {
             database.selected_meal = meals[i];
             updateDayMeal();
         });
+
+        if (meals[i] == "Brunch") {
+            meal_button.classList.add("hidden");
+        }
+
         meal_selector.appendChild(meal_button);
     }
 
@@ -88,6 +93,35 @@ function updateDayMeal() {
     let meal_selector = document.getElementById("meal-selector");
     let day_selector = document.getElementById("day-selector");
 
+    let time_slots = [];
+
+    let meals = getMealsAtTime(database.menus, database.selected_day, 0);
+
+    for (let school of Object.values(meals)) {
+        for (let cafe of school) {
+            time_slots.push(cafe.meal.time_slot)
+        }
+    }
+
+    time_slots = Array.from(new Set(time_slots));
+
+
+    if (time_slots.includes("Brunch")) {
+        meal_selector.children[0].classList.remove("hidden");
+        meal_selector.children[1].classList.add("hidden");
+        meal_selector.children[2].classList.add("hidden");
+        if (database.selected_meal == "Breakfast" || database.selected_meal == "Lunch") {
+            database.selected_meal = "Brunch";
+        }
+    } else {
+        meal_selector.children[0].classList.add("hidden");
+        meal_selector.children[1].classList.remove("hidden");
+        meal_selector.children[2].classList.remove("hidden");
+        if (database.selected_meal == "Brunch") {
+            database.selected_meal = "Breakfast";
+        }
+    }
+
     for (let i = 0; i < meal_selector.children.length; i++) {
         if (meal_selector.children[i].id == `meal-${database.selected_meal}`) {
             meal_selector.children[i].classList.add("selected");
@@ -110,6 +144,7 @@ function updateDayMeal() {
         el.classList.add("hidden");
     }
     let el = document.getElementById(`meal-${database.selected_day}-${database.selected_meal}`);
+
     if (el == null && database.selected_meal != "Night") {
         el = document.getElementById(`meal-${database.selected_day}-Brunch`);
     }

@@ -592,13 +592,39 @@ h2 {
   color: var(--text-main);
 }
 
+.meal-full {
+  margin-bottom: 100px;
+}
+
 .meal-buttons {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  margin-top: 20px;
+  position: absolute;
+  bottom: 90px;
+  margin: 0 auto;
+  left: 5px;
+  right: 5px;
+  background-color: var(--page-background);
+  z-index: 1000;
+  box-shadow: 0px 0px 10px 0px #000000;
+}
+
+.meal-button {
+  height: 50px;
+  font-weight: bolder;
+  border-radius: 0;
+}
+
+.meal-button:first-child {
+  border-top-left-radius: var(--roundedness);
+  border-bottom-left-radius: var(--roundedness);
+}
+
+.meal-button:last-child {
+  border-top-right-radius: var(--roundedness);
+  border-bottom-right-radius: var(--roundedness);
 }
 
 .school * {
@@ -614,7 +640,10 @@ h2 {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 10px;
-  margin-top: 20px;
+  margin-top: 20px; 
+  position: sticky;
+  top: 10px;
+  box-shadow: 0px 0px 10px 0px #000000;
 }
 
 .school .cafe-name {
@@ -638,7 +667,6 @@ h2 {
 .school .meal-station {
   width: 100%;
   margin-bottom: 10px;
-  padding-bottom: 10px;
   border-bottom: var(--text-light) solid 2px;
 }
 
