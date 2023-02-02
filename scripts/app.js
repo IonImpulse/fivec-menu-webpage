@@ -473,11 +473,11 @@ function determineMealToShow() {
     let hour = date.getHours();
     let meal = 0;
 
-    if (hour >= 11) {
+    if (hour >= 9) {
         meal = 1;
     }
 
-    if (hour >= 17) {
+    if (hour >= 14) {
         meal = 2;
     }
 

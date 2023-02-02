@@ -702,7 +702,7 @@ h2 {
   color: var(--text-alt);
 }
 
-#day-selector button:first-child, #meal-selector button:first-child {
+#day-selector button:first-child, #meal-selector button:first-child, #meal-selector button:nth-child(2) {
   border-top-left-radius: var(--roundedness);
   border-bottom-left-radius: var(--roundedness);
 }
