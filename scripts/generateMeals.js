@@ -69,8 +69,6 @@ async function generateMeals() {
 
         for (let i = 0; i < 4; i++) {
             const meals = getMealsAtTime(database.menus, format_date, i);
-            console.log(meals);
-
             if (Object.values(meals).length > 0) {
                 let meal_el = createMealElement(meals, format_date, i);
                 flexbox.appendChild(meal_el);

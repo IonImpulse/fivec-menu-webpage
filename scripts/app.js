@@ -290,8 +290,6 @@ async function generateMenu(cafe_menu, school_name, single=false) {
             continue;
         }
 
-        const to_show = Math.min(determineMealToShow(), day_part.menus.length - 1);
-
         // Append date
         let day_part_div = document.createElement("div");
         day_part_div.className = "day-part";
@@ -329,11 +327,9 @@ async function generateMenu(cafe_menu, school_name, single=false) {
 
             let time_slot_content = document.createElement("div");
 
-            if (to_show == day_part.menus.indexOf(menu) && day_str == "Today") {
-                time_slot_content.className = "time-slot content";
-            } else {
-                time_slot_content.className = "time-slot content hidden";
-            }
+
+            time_slot_content.className = "time-slot content hidden";
+
             // Append stations
             const stations = adjusted_stations(menu.stations);
             for (let station of stations) {
@@ -473,17 +469,31 @@ function determineMealToShow() {
     let hour = date.getHours();
     let meal = 0;
 
-    if (hour >= 9) {
-        meal = 1;
+    // if weekend
+    if (date.getDay() == 0 || date.getDay() == 6) {
+        if (hour >= 13) {
+            meal = 3;
+        } else {
+            meal = 0;
+        }
+    } else {
+        if (hour >= 0) {
+            meal = 1;
+        }
+        if (hour >= 9) {
+            meal = 2;
+        }
+    
+        if (hour >= 14) {
+            meal = 3;
+        }
+    
+        if (hour >= 20) {
+            meal = 4;
+        }
     }
 
-    if (hour >= 14) {
-        meal = 2;
-    }
-
-    if (hour >= 20) {
-        meal = 3;
-    }
+    
 
     return meal;
 }
