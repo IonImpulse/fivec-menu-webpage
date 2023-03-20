@@ -269,7 +269,7 @@ function createMealElement(meals, format_date) {
                 station_items_el.classList.add("station-items");
                 // only get first 10
                 let items = station.meals.slice(0, 10);
-                station_items_el.innerText = items.map(x => x.name).join(", ");
+                station_items_el.innerHTML = `<ul>${items.map(x => "<li>" + normalizeTitleCapitalization(x.name) + "</li>").join("")}</ul>`;
 
                 let stations_dietary_el = document.createElement("div");
                 stations_dietary_el.classList.add("station-dietary");
